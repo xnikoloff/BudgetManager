@@ -5,19 +5,24 @@
 }
 
 <div class="container">
-    <partial name="_PageTitlePartial" model="@("All Expenses")" />
+    <partial name="_PageTitlePartial" model="@(action == "All" ? "All Expenses" : "Wishlist")" />
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-1">
-            <h2 class="btn btn-success btn-lg"><a class="text-light" asp-action="Add"><i class="fa-solid fa-plus"></i></a></h2>
-        </div>
-        @if(action != "Wishlist")
+        @if (action == "All")
+        {
+            <div class="col-12 col-md-6 col-lg-1">
+                <h2 class="btn btn-success btn-lg"><a class="text-light" asp-action="Add"><i class="fa-solid fa-plus"></i></a></h2>
+            </div>
+        }
+
+        @if (action == "All")
         {
             <div class="col-12 col-md-6 col-lg-4 mb-5">
                 <h2 class="bg-warning text-center py-2 px-1 rounded"><a class="text-light" asp-action="Wishlist"><i class="fa-solid fa-list-ol"></i> <b>Wishlist</b></a></h2>
             </div>
         }
+
         <div class="col-12 col-md-6 col-lg-4 mb-5">
-            <h2 class="bg-dark text-light text-center py-2 px-1 rounded"><i class="fa-solid fa-sack-dollar"></i> <b>@ViewData["total"] BGN</b></h2>
+            <h2 class="bg-dark text-light text-center py-2 px-1 rounded"><i class="fa-solid fa-sack-dollar"></i> <b>@(action == "All" ? ViewData["total"] : ViewData["wishListTotal"]) BGN</b></h2>
         </div>
     </div>
     <div class="row">
@@ -35,7 +40,16 @@
                         <p class="card-text">@expense.Date.ToString("dd.MM.yyyy")</p>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-info" asp-action="Update" asp-route-id="@expense.Id">Update</a>
+                        @if (action == "All")
+                        {
+                            <a class="btn btn-info" asp-action="Update" asp-route-id="@expense.Id">Update</a>
+                        }
+
+                        else
+                        {
+                            <a class="btn btn-info" asp-action="Own" asp-route-id="@expense.Id">Mark as owned</a>
+                        }
+
                         <a class="btn btn-danger" asp-action="Delete" asp-route-id="@expense.Id">Delete</a>
                     </div>
                 </div>

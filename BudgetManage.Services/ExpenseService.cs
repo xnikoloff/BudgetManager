@@ -66,11 +66,17 @@ namespace BudgetManage.Services
         {
             return expenses.Select(e => e.Amount).Sum();
         }
-        
-        public async Task<int> SaveChanges()
+
+        public async Task<decimal> CalculateWishItemsTotal()
         {
-            var result = await _context.SaveChangesAsync();
-            return result;
+            var expenses = await _context.Expenses.Where(e => e.IsWishItem).ToListAsync();
+            return expenses.Select(e => e.Amount).Sum();
+        }
+
+
+        public async Task<List<Expense>> GetWishItems()
+        {
+            return await _context.Expenses.Where(e => e.IsWishItem).ToListAsync();
         }
 
         public async Task<int> MarkAsOwned(int? id)
@@ -81,9 +87,10 @@ namespace BudgetManage.Services
             return await SaveChanges();
         }
 
-        public async Task<List<Expense>> GetWishItems()
+        public async Task<int> SaveChanges()
         {
-            return await _context.Expenses.Where(e => e.IsWishItem).ToListAsync();
+            var result = await _context.SaveChangesAsync();
+            return result;
         }
     }
 }

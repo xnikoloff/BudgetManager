@@ -88,7 +88,15 @@ namespace BudgetManager.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Wishlist()
         {
+            ViewData["wishListTotal"] = await _service.CalculateWishItemsTotal();
             return this.View("All", await _service.GetWishItems());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Own(int? id)
+        {
+            await _service.MarkAsOwned(id);
+            return this.View(nameof(All));
         }
     }
 }
