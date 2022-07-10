@@ -1,0 +1,9 @@
+C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Domain\bin\Debug\netcoreapp3.1\BudgetManager.Domain.deps.json
+C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Domain\bin\Debug\netcoreapp3.1\BudgetManager.Domain.dll
+C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Domain\bin\Debug\netcoreapp3.1\BudgetManager.Domain.pdb
+C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Domain\obj\Debug\netcoreapp3.1\BudgetManager.Domain.csprojAssemblyReference.cache
+C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Domain\obj\Debug\netcoreapp3.1\BudgetManager.Domain.AssemblyInfoInputs.cache
+C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Domain\obj\Debug\netcoreapp3.1\BudgetManager.Domain.AssemblyInfo.cs
+C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Domain\obj\Debug\netcoreapp3.1\BudgetManager.Domain.csproj.CoreCompileInputs.cache
+C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Domain\obj\Debug\netcoreapp3.1\BudgetManager.Domain.dll
+C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Domain\obj\Debug\netcoreapp3.1\BudgetManager.Domain.pdb

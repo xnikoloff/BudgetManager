@@ -1,0 +1,37 @@
+﻿@model Expense
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="container">
+    <partial name="_PageTitlePartial" model="@(ViewData["action"] + " " + "Expense")"/>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 mx-auto">
+            <form asp-action="@((string)ViewData["action"] == "Update" ? "Update" : "Add")" method="post">
+                <div class="text-danger" asp-validation-summary="All"></div>
+                <div class="form-group">
+                    <label asp-for="Amount"></label>
+                    <input class="form-control" asp-for="Amount" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Reason"></label>
+                    <select class="form-control" asp-for="Reason" asp-items="@Html.GetEnumSelectList<Reason>()"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ExpenseType"></label>
+                    <select class="form-control" asp-for="ExpenseType" asp-items="@Html.GetEnumSelectList<ExpenseType>()"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Date"></label>
+                    <input class="form-control" asp-for="Date" value="@DateTime.Now" max="@DateTime.Now" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input class="form-control" asp-for="Description" />
+                </div>
+                <button type="submit" class="btn btn-success">@ViewData["action"]</button>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,38 @@
+﻿@model List<Expense>
+@{
+    ViewData["Title"] = "AllExpenses";
+}
+
+<div class="container">
+    <partial name="_PageTitlePartial" model="@("All Expenses")" />
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 mb-5">
+            <h2 class="bg-dark text-light text-center py-2 px-1 rounded"><i class="fa-solid fa-sack-dollar"></i> <b>@ViewData["total"] BGN</b></h2>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var expense in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">@expense.Amount BGN, @expense.ExpenseType</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="@(expense.Reason.ToString() == "Extra" ? "text-danger" : "text-primary")">@expense.Reason</h5>
+                        <hr />
+                        <p class="card-text">@expense.Description</p>
+                        <p class="card-text">@expense.Date.ToString("dd.MM.yyyy")</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-info" asp-action="Update" asp-route-id="@expense.Id">Update</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@expense.Id">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+

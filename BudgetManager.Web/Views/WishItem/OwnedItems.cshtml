@@ -1,0 +1,45 @@
+﻿@model List<WishItem>
+@{
+    ViewData["Title"] = "Owned Items";
+}
+
+<div class="container">
+    <partial name="_PageTitlePartial" model="@ViewData["Title"]" />
+    <div class="row mb-3">
+        <div class="col-12 col-md-6 col-lg-2">
+            <a class="btn btn-warning btn-lg text-white" asp-action="All">Wish Items</a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <h4>Total: @ViewData["totalPrice"] BGN</h4>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">DateOwned</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td>@item.Name</td>
+                        <td>@item.Price BGN</td>
+                        <td>@(item.Description ?? "N/A")</td>
+                        <td>@item.Priority</td>
+                        <td>@item.DateOwned.ToString("dd.MM.yyyy")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

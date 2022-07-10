@@ -1,0 +1,43 @@
+﻿@model List<WishItem>
+@{
+    ViewData["Title"] = "All";
+}
+
+<div class="container">
+    <partial name="_PageTitlePartial" model="@("All Wish Items")" />
+    <div class="row mb-3">
+        <div class="col-12 col-md-6 col-lg-1">
+            <a class="btn btn-info btn-lg text-white" asp-action="OwnedItems"><i class="fa-solid fa-circle-check"></i></a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-1">
+            <a class="btn btn-success btn-lg text-white" asp-action="Add"><i class="fa-solid fa-plus"></i></a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-2 bg-dark rounded text-center ml-auto">
+            <h4 class="text-white">Total</h4>
+            <h4 class="text-success">@ViewData["totalPrice"] BGN</h4>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <div class="card" style="min-height:300px">
+                    <div class="card-header">
+                        <h4 class="card-title">@item.Name, <br>@item.Priority</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5>@item.Price лв.</h5>
+                        <p class="card-text">@item.Description</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-info" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                        <a class="btn btn-success" asp-action="Own" asp-route-id="@item.Id">Mark as Owned</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+

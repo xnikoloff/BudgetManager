@@ -1,0 +1,33 @@
+﻿@model List<Income>
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="container">
+    <partial name="_PageTitlePartial" model="@("All Incomes")" />
+    <div class="row">
+        @foreach (var income in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">@income.Amount BGN, @income.IncomeType</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5>@income.Sender</h5>
+                        <hr />
+                        <p class="card-text">@income.Description</p>
+                        <p class="card-text">@income.Date.ToString("dd.MM.yyyy")</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-info" asp-action="Update" asp-route-id="@income.Id">Update</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@income.Id">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+
