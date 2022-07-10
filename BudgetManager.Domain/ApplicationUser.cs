@@ -10,7 +10,6 @@ namespace BudgetManager.Domain
         public IEnumerable<Expense> Expense { get; set; }
         public IEnumerable<Income> Income { get; set; }
         public IEnumerable<Todo> Todos { get; set; }
-        public IEnumerable<WishItem> WishItems { get; set; }
         public decimal MonthlyIncome { get; set; }
         public decimal MaxMonthlyExpense { get; set; }
     }

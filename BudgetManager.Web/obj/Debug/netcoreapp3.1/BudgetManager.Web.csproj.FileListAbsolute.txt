@@ -174,8 +174,4 @@ C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp
 C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\Expense\All.cshtml.g.cs
 C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\Income\All.cshtml.g.cs
 C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\Todo\Add.cshtml.g.cs
-C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\WishItem\Add.cshtml.g.cs
-C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\WishItem\All.cshtml.g.cs
-C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\WishItem\OwnedItems.cshtml.g.cs
-C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\WishItem\Update.cshtml.g.cs
 C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs

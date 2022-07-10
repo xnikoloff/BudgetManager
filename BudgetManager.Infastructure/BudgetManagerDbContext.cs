@@ -12,6 +12,5 @@ namespace BudgetManager.Infastructure
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<Income> Incomes { get; set; }
         public DbSet<Todo> Todos { get; set; }
-        public DbSet<WishItem> WishItems { get; set; }
     }
 }
