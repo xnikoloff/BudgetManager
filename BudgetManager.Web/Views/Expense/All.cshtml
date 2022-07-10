@@ -1,11 +1,21 @@
 ﻿@model List<Expense>
 @{
     ViewData["Title"] = "AllExpenses";
+    var action = ViewContext.RouteData.Values["Action"].ToString();
 }
 
 <div class="container">
     <partial name="_PageTitlePartial" model="@("All Expenses")" />
     <div class="row">
+        <div class="col-12 col-md-6 col-lg-1">
+            <h2 class="btn btn-success btn-lg"><a class="text-light" asp-action="Add"><i class="fa-solid fa-plus"></i></a></h2>
+        </div>
+        @if(action != "Wishlist")
+        {
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <h2 class="bg-warning text-center py-2 px-1 rounded"><a class="text-light" asp-action="Wishlist"><i class="fa-solid fa-list-ol"></i> <b>Wishlist</b></a></h2>
+            </div>
+        }
         <div class="col-12 col-md-6 col-lg-4 mb-5">
             <h2 class="bg-dark text-light text-center py-2 px-1 rounded"><i class="fa-solid fa-sack-dollar"></i> <b>@ViewData["total"] BGN</b></h2>
         </div>

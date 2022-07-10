@@ -4,14 +4,16 @@ using BudgetManager.Infastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BudgetManager.Infastructure.Migrations
 {
     [DbContext(typeof(BudgetManagerDbContext))]
-    partial class BudgetManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220710073716_Remove Wish-related stuff")]
+    partial class RemoveWishrelatedstuff
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

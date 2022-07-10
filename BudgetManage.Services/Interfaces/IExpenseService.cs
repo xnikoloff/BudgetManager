@@ -9,5 +9,7 @@ namespace BudgetManage.Services.Interfaces
     public interface IExpenseService : IServiceBase<Expense>
     {
         decimal CalculateTotal(List<Expense> expenses);
+        Task<List<Expense>> GetWishItems();
+        Task<int> MarkAsOwned(int? id);
     }
 }

@@ -84,5 +84,11 @@ namespace BudgetManager.Web.Controllers
             var entityToDelete = await _service.Delete(id);
             return RedirectToAction(nameof(All));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Wishlist()
+        {
+            return this.View("All", await _service.GetWishItems());
+        }
     }
 }

@@ -29,9 +29,19 @@
                     <label asp-for="Description"></label>
                     <input class="form-control" asp-for="Description" />
                 </div>
+                <div class="form-group">
+                    <input class="mx-2" asp-for="IsWishItem" />
+                    <label asp-for="IsWishItem"></label>
+                </div>
                 <button type="submit" class="btn btn-success">@ViewData["action"]</button>
             </form>
         </div>
     </div>
 </div>
+
+<style>
+    #IsWishItem{
+        transform: scale(2);
+    }
+</style>
 

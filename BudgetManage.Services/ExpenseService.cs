@@ -26,7 +26,8 @@ namespace BudgetManage.Services
 
         public async Task<List<Expense>> GetAll()
         {
-            return await _context.Expenses.ToListAsync();
+            var expenses = await _context.Expenses.ToListAsync();
+            return expenses.Where(e => e.IsWishItem == false).ToList();
         }
 
         public async Task<int> Add(Expense expense)
@@ -45,6 +46,7 @@ namespace BudgetManage.Services
             entity.ExpenseType = expense.ExpenseType;
             entity.Date = expense.Date;
             entity.Description = expense.Description;
+            entity.IsWishItem = expense.IsWishItem;
 
             _context.Expenses.Update(entity);
             var result = await SaveChanges();
@@ -69,6 +71,19 @@ namespace BudgetManage.Services
         {
             var result = await _context.SaveChangesAsync();
             return result;
+        }
+
+        public async Task<int> MarkAsOwned(int? id)
+        {
+            var expense = await _context.Expenses.FindAsync(id);
+            expense.IsWishItem = false;
+
+            return await SaveChanges();
+        }
+
+        public async Task<List<Expense>> GetWishItems()
+        {
+            return await _context.Expenses.Where(e => e.IsWishItem).ToListAsync();
         }
     }
 }
