@@ -40,16 +40,13 @@
                         <p class="card-text">@expense.Date.ToString("dd.MM.yyyy")</p>
                     </div>
                     <div class="card-footer">
-                        @if (action == "All")
+                        @if (action == "Wishlist")
                         {
-                            <a class="btn btn-info" asp-action="Update" asp-route-id="@expense.Id">Update</a>
-                        }
 
-                        else
-                        {
-                            <a class="btn btn-info" asp-action="Own" asp-route-id="@expense.Id">Mark as owned</a>
+                            <a class="btn btn-success" asp-action="Own" asp-route-id="@expense.Id">Mark as owned</a>
                         }
-
+                        
+                        <a class="btn btn-info" asp-action="Update" asp-route-id="@expense.Id">Update</a>
                         <a class="btn btn-danger" asp-action="Delete" asp-route-id="@expense.Id">Delete</a>
                     </div>
                 </div>

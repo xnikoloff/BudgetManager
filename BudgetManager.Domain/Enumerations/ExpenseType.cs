@@ -15,6 +15,7 @@ namespace BudgetManager.Domain.Enumerations
         Bill = 7,
         Electronics = 8,
         CarStuff = 9,
-        Gift = 10
+        Gift = 10,
+        Household = 11
     }
 }
