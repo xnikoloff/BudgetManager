@@ -1,14 +1,19 @@
-﻿using BudgetManager.Domain;
+﻿using BudgetManage.Services.Interfaces;
+using BudgetManager.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BudgetManager.Web.Controllers
 {
     public class TodoController : ControllerBase<Todo>
     {
+        private readonly ITodoService _service;
+
+        public TodoController(ITodoService service)
+        {
+            _service = service;
+        }
         [HttpGet]
         public override IActionResult Add()
         {
@@ -16,14 +21,15 @@ namespace BudgetManager.Web.Controllers
         }
 
         [HttpPost]
-        public override Task<IActionResult> Add(Todo entity)
+        public async override Task<IActionResult> Add(Todo entity)
         {
-            throw new NotImplementedException();
+            await _service.Add(entity);
+            return RedirectToAction(nameof(Add));
         }
 
-        public override Task<IActionResult> All()
+        public override async Task<IActionResult> All()
         {
-            throw new NotImplementedException();
+            return this.View(await _service.GetAll());
         }
 
         public override Task<IActionResult> Delete(int? id)

@@ -18,5 +18,7 @@ namespace BudgetManager.Domain
 
         [ForeignKey(nameof(ApplicationUserId))]
         public virtual ApplicationUser ApplicationUser { get; set; }
+
+        public ICollection<TodoTask> TodoTasks { get; set; }
     }
 }

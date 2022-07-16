@@ -1,0 +1,45 @@
+﻿@model List<TodoTask>
+@{
+    ViewData["Title"] = "Todo Tasks";
+}
+
+<div class="container">
+    <partial name="_PageTitlePartial" model="@("All Todo Tasks")" />
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-1 mb-5">
+            <h2 class="btn btn-success btn-lg"><a class="text-light" asp-action="Add"><i class="fa-solid fa-plus"></i></a></h2>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Task</th>
+                    <th>Time</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var todoTask in Model)
+                {
+                    <tr>
+                        <td class="@(todoTask.IsCompleted ? "bg-success" : "bg-warning") font-weight-bold text-light">@(todoTask.IsCompleted ? "Completed" : "Processing")</td>
+                        <td>@todoTask.Task</td>
+                        <td>@todoTask.Time.ToShortTimeString()</td>
+                        @if (!todoTask.IsCompleted)
+                        {
+                            <td><a asp-action="Complete" asp-route-id="@todoTask.Id" class="btn btn-success">Complete</a></td>
+                        }
+                        else
+                        {
+                            <td><span class="btn btn-secondary">Complete</span></td>
+                        }
+                    </tr>
+                 }
+                </tbody>
+        </table>
+    </div>
+</div>
+
+

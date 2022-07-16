@@ -11,7 +11,7 @@ namespace BudgetManager.Web.Controllers
 {
     public class ExpenseController : ControllerBase<Expense>
     {
-        private IExpenseService _service;
+        private readonly IExpenseService _service;
 
         public ExpenseController(IExpenseService service)
         {

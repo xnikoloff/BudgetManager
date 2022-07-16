@@ -115,6 +115,33 @@ namespace BudgetManager.Infastructure.Migrations
                     b.ToTable("Todos");
                 });
 
+            modelBuilder.Entity("BudgetManager.Domain.TodoTask", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Task")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("TodoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TodoId");
+
+                    b.ToTable("TodoTasks");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -353,6 +380,13 @@ namespace BudgetManager.Infastructure.Migrations
                     b.HasOne("BudgetManager.Domain.ApplicationUser", "ApplicationUser")
                         .WithMany("Todos")
                         .HasForeignKey("ApplicationUserId");
+                });
+
+            modelBuilder.Entity("BudgetManager.Domain.TodoTask", b =>
+                {
+                    b.HasOne("BudgetManager.Domain.Todo", "Todo")
+                        .WithMany("TodoTasks")
+                        .HasForeignKey("TodoId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

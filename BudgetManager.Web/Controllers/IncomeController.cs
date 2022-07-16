@@ -10,7 +10,7 @@ namespace BudgetManager.Web.Controllers
 {
     public class IncomeController : ControllerBase<Income>
     {
-        private IIncomeService _service;
+        private readonly IIncomeService _service;
 
         public IncomeController(IIncomeService service)
         {
