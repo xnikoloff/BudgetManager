@@ -55,12 +55,40 @@ namespace BudgetManage.Services
             throw new NotImplementedException();
         }
 
-        public async Task<int> Complete(int id)
+        public async Task Complete(int id)
         {
             var todoTask = await _context.TodoTasks.Where(tt => tt.Id == id).FirstOrDefaultAsync();
             todoTask.IsCompleted = true;
 
-            return await SaveChanges();
+            await SaveChanges();
+
+            if (await AreAllTodoTasksCompleted(id))
+            {
+                var todo = await _context.Todos.Where(t => t.Id == todoTask.TodoId).FirstOrDefaultAsync();
+                todo.IsCompelted = true;
+                await SaveChanges();
+            }
+        }
+
+        public async Task<bool> AreAllTodoTasksCompleted(int id)
+        {
+            var todoTasks = await _context.TodoTasks.Where(tt => tt.Id == id).ToListAsync();
+            int completedTasksCount = 0;
+
+            foreach(var todoTask in todoTasks)
+            {
+                if(todoTask.IsCompleted == true)
+                {
+                    completedTasksCount++;
+                }
+            }
+
+            if(completedTasksCount == todoTasks.Count)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

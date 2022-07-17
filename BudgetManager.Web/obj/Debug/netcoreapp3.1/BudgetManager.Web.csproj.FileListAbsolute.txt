@@ -178,3 +178,4 @@ C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp
 C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\Todo\All.cshtml.g.cs
 C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\TodoTask\Add.cshtml.g.cs
 C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\TodoTask\TodoTaskForTodo.cshtml.g.cs
+C:\Users\hrist\source\repos\BudgetManager\BudgetManager.Web\obj\Debug\netcoreapp3.1\Razor\Views\Todo\Archive.cshtml.g.cs

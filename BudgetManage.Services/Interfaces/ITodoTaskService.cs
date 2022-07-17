@@ -9,6 +9,6 @@ namespace BudgetManage.Services.Interfaces
     public interface ITodoTaskService : IServiceBase<TodoTask>
     {
         Task<List<TodoTask>> GetTodoTasksForTodo(int taskId);
-        Task<int> Complete(int taskId);
+        Task Complete(int taskId);
     }
 }

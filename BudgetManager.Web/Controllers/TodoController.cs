@@ -2,6 +2,7 @@
 using BudgetManager.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BudgetManager.Web.Controllers
@@ -29,7 +30,14 @@ namespace BudgetManager.Web.Controllers
 
         public override async Task<IActionResult> All()
         {
-            return this.View(await _service.GetAll());
+            var todos = await _service.GetAll();
+            return this.View(todos.Where(t => t.IsCompelted == false).ToList());
+        }
+
+        public async Task<IActionResult> Archive()
+        {
+            var todos = await _service.GetAll();
+            return this.View(todos.Where(t => t.IsCompelted == true).ToList());
         }
 
         public override Task<IActionResult> Delete(int? id)
