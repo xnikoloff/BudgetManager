@@ -9,9 +9,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetManage.Services", "Bu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetManager.Domain", "BudgetManager.Domain\BudgetManager.Domain.csproj", "{B37C171E-611F-470C-A2FB-31E42489FFE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetManager.Tests", "BudgetManager.Tests\BudgetManager.Tests.csproj", "{AD9856A5-0C47-4A2D-BDF3-23A58DB338F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetManager.Tests", "BudgetManager.Tests\BudgetManager.Tests.csproj", "{AD9856A5-0C47-4A2D-BDF3-23A58DB338F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetManager.Infastructure", "BudgetManager.Infastructure\BudgetManager.Infastructure.csproj", "{62BA8316-34DC-45F5-8C14-485929CDC035}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetManager.Infastructure", "BudgetManager.Infastructure\BudgetManager.Infastructure.csproj", "{62BA8316-34DC-45F5-8C14-485929CDC035}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5F71742C-DC24-4E1E-85FD-C80AA4690E64}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
