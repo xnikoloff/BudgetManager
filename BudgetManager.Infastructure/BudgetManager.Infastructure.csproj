@@ -11,6 +11,8 @@
     <Compile Remove="Migrations\20220322210410_Initial.Designer.cs" />
     <Compile Remove="Migrations\20220322212845_ApplicationUser.cs" />
     <Compile Remove="Migrations\20220322212845_ApplicationUser.Designer.cs" />
+    <Compile Remove="Migrations\20220717112821_Add CheckList and CheckItem.cs" />
+    <Compile Remove="Migrations\20220717112821_Add CheckList and CheckItem.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -13,5 +13,7 @@ namespace BudgetManager.Infastructure
         public DbSet<Income> Incomes { get; set; }
         public DbSet<Todo> Todos { get; set; }
         public DbSet<TodoTask> TodoTasks { get; set; }
+        public DbSet<Checklist> Checklists { get; set; }
+        public DbSet<CheckItem> CheckItems { get; set; }
     }
 }
