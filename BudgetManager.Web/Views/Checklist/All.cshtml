@@ -1,0 +1,38 @@
+﻿@model List<Checklist>
+@{
+    ViewData["Title"] = "Checklists";
+}
+
+<div class="container">
+    <partial name="_PageTitlePartial" model="@("All Checklists")" />
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-1 mb-5">
+            <h2 class="btn btn-success btn-lg"><a class="text-light" asp-action="Add"><i class="fa-solid fa-plus"></i></a></h2>
+        </div>
+        <div class="col-12 col-md-6 col-lg-1 mb-5">
+            <h2 class="btn btn-warning btn-lg"><a class="text-light" asp-action="Archive"><i class="fa-solid fa-clipboard-check"></i></a></h2>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var checklist in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header bg-warning">
+                        <h4 class="card-title"><a asp-action="CheckItemForChecklist" asp-controller="CheckItem" asp-route-todoId="@checklist.Id" class="text-light">@checklist.Title</a></h4>
+                    </div>
+                    <div class="card-body">
+                        <h5>@checklist.Description</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-info" asp-action="Update" asp-controller="Checklist" asp-route-id="@checklist.Id">Update</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@checklist.Id">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+

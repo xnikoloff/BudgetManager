@@ -12,6 +12,7 @@ namespace BudgetManage.Services
             services.AddTransient<IIncomeService, IncomeService>();
             services.AddTransient<ITodoService, TodoService>();
             services.AddTransient<ITodoTaskService, TodoTaskService>();
+            services.AddTransient<IChecklistService, ChecklistService>();
 
             return services;
         }
