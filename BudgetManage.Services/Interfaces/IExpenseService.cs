@@ -12,5 +12,6 @@ namespace BudgetManage.Services.Interfaces
         Task<decimal> CalculateWishItemsTotal();
         Task<List<Expense>> GetWishItems();
         Task<int> MarkAsOwned(int? id);
+        Task<List<Expense>> ExpenseForExpenseGroup(int? expenseGroupId);
     }
 }

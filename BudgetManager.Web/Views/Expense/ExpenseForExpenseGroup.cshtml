@@ -1,0 +1,32 @@
+﻿@model List<Expense>
+
+<div class="container">
+    <partial name="_PageTitlePartial" model="@("All Expenses")" />
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-1 mb-5">
+            <h2 class="btn btn-success btn-lg"><a class="text-light" asp-action="Add" asp-controller="CheckItem" asp-route-id="@((int)TempData["expenseGroupId"])"><i class="fa-solid fa-plus"></i></a></h2>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Text</th>
+                    <th>Is Checked?</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var expense in Model)
+                {
+                    <tr>
+                        <td>@expense.Amount </td>
+                        <td>@expense.Description</td>
+                        <td>@expense.Date</td>
+                        <td>@expense.Reason</td>
+                        <td class="@(expense.IsWishItem ? "bg-success" : "bg-waring")">@(expense.IsWishItem ? "Yes" : "No")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

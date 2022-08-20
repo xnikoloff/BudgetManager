@@ -9,13 +9,18 @@ namespace BudgetManager.Domain
         public Reason Reason { get; set; }
 
         public ExpenseType ExpenseType { get; set; }
-
-        public string ApplicationUserId { get; set; }
-
+        
         [Display(Name = "Is Wish Item?")]
         public bool IsWishItem { get; set; }
-
+        
         [ForeignKey(nameof(ApplicationUserId))]
+        public string ApplicationUserId { get; set; }
+
         public virtual ApplicationUser ApplicationUser { get; set; }
+
+        [ForeignKey(nameof(ExpenseGroup))]
+        public int? ExpenseGroupId { get; set; }
+
+        public ExpenseGroup ExpenseGroup { get; set; }
     }
 }

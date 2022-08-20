@@ -1,4 +1,5 @@
-﻿using BudgetManage.Services.Interfaces;
+﻿using BudgetManage.Services;
+using BudgetManage.Services.Interfaces;
 using BudgetManager.Domain;
 using BudgetManager.Domain.Enumerations;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,13 @@ namespace BudgetManager.Web.Controllers
 
             return this.View(result.OrderByDescending(e => e.Id).ToList());
         }
+        
+        [HttpGet]
+        public async Task<IActionResult> ExpenseForExpenseGroup(int? expenseGroupId)
+        {
+            TempData["expenseGroupId"] = expenseGroupId;
+            return View(await _service.ExpenseForExpenseGroup(expenseGroupId));
+        }
 
         public async Task<IActionResult> GetAllExtra()
         {
@@ -46,7 +54,7 @@ namespace BudgetManager.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return this.View(expense);
+                return this.View("Edit", expense);
             }
 
             await _service.Add(expense);

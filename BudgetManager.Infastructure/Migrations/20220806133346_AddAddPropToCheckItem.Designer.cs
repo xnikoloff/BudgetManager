@@ -4,14 +4,16 @@ using BudgetManager.Infastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BudgetManager.Infastructure.Migrations
 {
     [DbContext(typeof(BudgetManagerDbContext))]
-    partial class BudgetManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220806133346_AddAddPropToCheckItem")]
+    partial class AddAddPropToCheckItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,9 +89,6 @@ namespace BudgetManager.Infastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ExpenseGroupId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ExpenseType")
                         .HasColumnType("int");
 
@@ -103,28 +102,7 @@ namespace BudgetManager.Infastructure.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("ExpenseGroupId");
-
                     b.ToTable("Expenses");
-                });
-
-            modelBuilder.Entity("BudgetManager.Domain.ExpenseGroup", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ExpenseGroups");
                 });
 
             modelBuilder.Entity("BudgetManager.Domain.Income", b =>
@@ -446,12 +424,6 @@ namespace BudgetManager.Infastructure.Migrations
                     b.HasOne("BudgetManager.Domain.ApplicationUser", "ApplicationUser")
                         .WithMany("Expense")
                         .HasForeignKey("ApplicationUserId");
-
-                    b.HasOne("BudgetManager.Domain.ExpenseGroup", "ExpenseGroup")
-                        .WithMany("Expenses")
-                        .HasForeignKey("ExpenseGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("BudgetManager.Domain.Income", b =>

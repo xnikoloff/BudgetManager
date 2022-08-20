@@ -1,14 +1,12 @@
 ﻿using BudgetManage.Services.Interfaces;
 using BudgetManager.Domain;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace BudgetManager.Web.Controllers
 {
-    public class ChecklistController : ControllerBase<Checklist>
+    public class ChecklistController : Controller
     {
         private readonly IChecklistService _service;
 
@@ -18,21 +16,21 @@ namespace BudgetManager.Web.Controllers
         }
 
         [HttpGet]
-        public override IActionResult Add()
+        public IActionResult Add(int? checklistId)
         {
             ViewData["action"] = "Add";
             return this.View("Edit");
         }
 
         [HttpPost]
-        public override async Task<IActionResult> Add(Checklist entity)
+        public async Task<IActionResult> Add(Checklist entity)
         {
             await _service.Add(entity);
             return RedirectToAction(nameof(All));
         }
 
         [HttpGet]
-        public override async Task<IActionResult> All()
+        public async Task<IActionResult> All()
         {
             var checklists = await _service.GetAll();
             return this.View(checklists.Where(ch => ch.IsCompleted == false).ToList());
@@ -46,14 +44,14 @@ namespace BudgetManager.Web.Controllers
         }
 
         [HttpGet]
-        public async override Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             await _service.Delete(id);
             return RedirectToAction(nameof(All));
         }
 
         [HttpGet]
-        public async override Task<IActionResult> Update(int? id)
+        public async Task<IActionResult> Update(int? id)
         {
             ViewData["action"] = "Update";
             var checklist = await _service.GetById(id);
@@ -61,7 +59,7 @@ namespace BudgetManager.Web.Controllers
         }
 
         [HttpPost]
-        public async override Task<IActionResult> Update(Checklist entity)
+        public async Task<IActionResult> Update(Checklist entity)
         {
             await _service.Update(entity);
             return RedirectToAction(nameof(All));

@@ -4,14 +4,16 @@ using BudgetManager.Infastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BudgetManager.Infastructure.Migrations
 {
     [DbContext(typeof(BudgetManagerDbContext))]
-    partial class BudgetManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220817055136_AddExpenseGroup")]
+    partial class AddExpenseGroup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,7 +126,7 @@ namespace BudgetManager.Infastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ExpenseGroups");
+                    b.ToTable("ExpenseGroup");
                 });
 
             modelBuilder.Entity("BudgetManager.Domain.Income", b =>

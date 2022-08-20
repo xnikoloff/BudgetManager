@@ -29,6 +29,16 @@ namespace BudgetManage.Services
             var expenses = await _context.Expenses.ToListAsync();
             return expenses.Where(e => e.IsWishItem == false).ToList();
         }
+        
+        public async Task<List<Expense>> ExpenseForExpenseGroup(int? expenseGroupId)
+        {
+            if (expenseGroupId == null)
+            {
+                throw new NullReferenceException($"{nameof(expenseGroupId)} is null");
+            }
+
+            return await _context.Expenses.Where(e => e.ExpenseGroupId == expenseGroupId).ToListAsync();
+        }
 
         public async Task<int> Add(Expense expense)
         {

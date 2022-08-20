@@ -1,10 +1,10 @@
-﻿@model List<Checklist>
+﻿@model List<ExpenseGroup>
 @{
     ViewData["Title"] = "Checklists";
 }
 
 <div class="container">
-    <partial name="_PageTitlePartial" model="@("All Checklists")" />
+    <partial name="_PageTitlePartial" model="@("All Expense Groups")" />
     <div class="row">
         <div class="col-12 col-md-6 col-lg-1 mb-5">
             <h2 class="btn btn-success btn-lg"><a class="text-light" asp-action="Add"><i class="fa-solid fa-plus"></i></a></h2>
@@ -14,19 +14,19 @@
         </div>
     </div>
     <div class="row">
-        @foreach (var checklist in Model)
+        @foreach (var expenseGroup in Model)
         {
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-header bg-warning">
-                        <h4 class="card-title"><a asp-action="CheckItemsForChecklist" asp-controller="CheckItem" asp-route-checklistid="@checklist.Id" class="text-light">@checklist.Title</a></h4>
+                        <h4 class="card-title"><a asp-action="ExpenseForExpenseGroup" asp-controller="Expense" asp-route-expenseGroupId="@expenseGroup.Id" class="text-light">@expenseGroup.Title</a></h4>
                     </div>
                     <div class="card-body">
-                        <h5>@checklist.Description</h5>
+                        <h5>@expenseGroup.Description</h5>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-info" asp-action="Update" asp-controller="CheckItem" asp-route-id="@checklist.Id">Update</a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@checklist.Id">Delete</a>
+                        <a class="btn btn-info" asp-action="Update" asp-controller="ExpenseGroup" asp-route-id="@expenseGroup.Id">Update</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@expenseGroup.Id">Delete</a>
                     </div>
                 </div>
             </div>

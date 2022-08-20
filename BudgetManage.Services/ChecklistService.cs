@@ -12,10 +12,12 @@ namespace BudgetManage.Services
     public class ChecklistService : IChecklistService
     {
         private readonly BudgetManagerDbContext _context;
+        private readonly ICheckItemService _checkItemService;
 
-        public ChecklistService(BudgetManagerDbContext context)
+        public ChecklistService(BudgetManagerDbContext context, ICheckItemService checkItemService)
         {
             _context = context;
+            _checkItemService = checkItemService;
         }
 
         public async Task<int> Add(Checklist entity)
