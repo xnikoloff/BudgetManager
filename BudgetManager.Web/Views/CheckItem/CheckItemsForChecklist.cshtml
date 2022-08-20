@@ -22,7 +22,16 @@
                     <tr>
                         <td>@checkItem.Text </td>
                         <td>@checkItem.Description</td>
-                        <td class=""><a asp-action="Check" asp-route-id="@checkItem.Id" class="btn @(checkItem.IsChecked ? "btn-dark" : "btn-success") text-white">Check</a></td>
+
+                        @if(!checkItem.IsChecked)
+                        {
+                            <td><a asp-action="Check" asp-route-id="@checkItem.Id" class="btn btn-dark text-white">Check</a></td>
+                        }
+
+                        else
+                        {
+                            <td class="bg-success text-white">Checked</td>
+                        }
                     </tr>
                 }
             </tbody>
