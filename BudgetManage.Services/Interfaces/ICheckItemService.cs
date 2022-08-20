@@ -9,6 +9,6 @@ namespace BudgetManage.Services.Interfaces
     public interface ICheckItemService : IServiceBase<CheckItem>
     {
         Task<List<CheckItem>> GetCheckItemsForChecklist(int? id);
-        Task<int> Check(int? id);
+        Task<int> ToggleCheck(int? id);
     }
 }

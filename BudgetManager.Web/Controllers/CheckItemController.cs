@@ -63,9 +63,9 @@ namespace BudgetManager.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Check(int id)
+        public async Task<IActionResult> ToggleCheck(int id)
         {
-            int checkListId = await _service.Check(id);
+            int checkListId = await _service.ToggleCheck(id);
             return RedirectToAction(nameof(CheckItemsForChecklist), new { checkListId });
         }
     }

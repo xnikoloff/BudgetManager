@@ -54,10 +54,20 @@ namespace BudgetManage.Services
             return await SaveChanges();
         }
 
-        public async Task<int> Check(int? id)
+        public async Task<int> ToggleCheck(int? id)
         {
             var checkItem = await _context.CheckItems.FindAsync(id);
-            checkItem.IsChecked = true;
+
+            if (checkItem.IsChecked)
+            {
+                checkItem.IsChecked = false;
+            }
+
+            else
+            {
+                checkItem.IsChecked = true;
+            }
+
             await SaveChanges();
             return checkItem.CheckListId.Value;
         }

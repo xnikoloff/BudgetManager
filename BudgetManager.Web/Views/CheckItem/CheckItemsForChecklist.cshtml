@@ -23,14 +23,14 @@
                         <td>@checkItem.Text </td>
                         <td>@checkItem.Description</td>
 
-                        @if(!checkItem.IsChecked)
+                        @if(checkItem.IsChecked)
                         {
-                            <td><a asp-action="Check" asp-route-id="@checkItem.Id" class="btn btn-dark text-white">Check</a></td>
+                            <td><a asp-action="ToggleCheck" asp-route-id="@checkItem.Id" class="btn btn-dark text-white">Uncheck</a></td>
                         }
 
                         else
                         {
-                            <td class="bg-success text-white">Checked</td>
+                            <td><a asp-action="ToggleCheck" asp-route-id="@checkItem.Id" class="btn btn-success text-white">Check</a></td>
                         }
                     </tr>
                 }
