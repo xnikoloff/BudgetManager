@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BudgetManager.Web.Controllers
 {
-    public class ExpenseController : ControllerBase<Expense>
+    public class ExpenseController : Controller
     {
         private readonly IExpenseService _service;
 
@@ -20,7 +20,7 @@ namespace BudgetManager.Web.Controllers
         }
 
         [HttpGet]
-        public async override Task<IActionResult> All()
+        public async Task<IActionResult> All()
         {
             var result = await _service.GetAll();
             ViewData["total"] = _service.CalculateTotal(result);
@@ -43,14 +43,15 @@ namespace BudgetManager.Web.Controllers
         }
 
         [HttpGet]
-        public override IActionResult Add()
+        public IActionResult Add(int id)
         {
             ViewData["action"] = nameof(Add);
+            ViewData["expenseGroupId"] = id;
             return this.View("Edit");
         }
 
         [HttpPost]
-        public async override Task<IActionResult> Add(Expense expense)
+        public async Task<IActionResult> Add(Expense expense)
         {
             if (!ModelState.IsValid)
             {
@@ -62,7 +63,7 @@ namespace BudgetManager.Web.Controllers
         }
 
         [HttpGet]
-        public async override Task<IActionResult> Update(int? id)
+        public async Task<IActionResult> Update(int? id)
         {
             if(id == null)
             {
@@ -75,14 +76,14 @@ namespace BudgetManager.Web.Controllers
         }
 
         [HttpPost]
-        public async override Task<IActionResult> Update(Expense expense)
+        public async Task<IActionResult> Update(Expense expense)
         {
             await _service.Update(expense);
             return RedirectToAction(nameof(All));
         }
 
         [HttpGet]
-        public async override Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {

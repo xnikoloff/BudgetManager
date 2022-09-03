@@ -17,6 +17,8 @@
     <Compile Remove="Migrations\20220817053237_AddExpenseGroup.Designer.cs" />
     <Compile Remove="Migrations\20220817053553_AddExpenseGroup.cs" />
     <Compile Remove="Migrations\20220817053553_AddExpenseGroup.Designer.cs" />
+    <Compile Remove="Migrations\20220902070418_test.cs" />
+    <Compile Remove="Migrations\20220902070418_test.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
