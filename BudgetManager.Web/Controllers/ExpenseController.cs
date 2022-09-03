@@ -58,6 +58,7 @@ namespace BudgetManager.Web.Controllers
                 return this.View("Edit", expense);
             }
 
+            expense.Id = 0;
             await _service.Add(expense);
             return RedirectToAction(nameof(All));
         }
