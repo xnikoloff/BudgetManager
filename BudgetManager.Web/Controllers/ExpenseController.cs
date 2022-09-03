@@ -60,7 +60,7 @@ namespace BudgetManager.Web.Controllers
 
             expense.Id = 0;
             await _service.Add(expense);
-            return RedirectToAction(nameof(All));
+            return RedirectToAction(nameof(ExpenseForExpenseGroup), new {Id = expense.ExpenseGroupId});
         }
 
         [HttpGet]

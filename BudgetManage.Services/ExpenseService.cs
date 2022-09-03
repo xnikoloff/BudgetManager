@@ -1,4 +1,5 @@
 ﻿using BudgetManage.Services.Interfaces;
+using BudgetManager.Domain.ViewModels;
 using BudgetManager.Domain;
 using BudgetManager.Infastructure;
 using Microsoft.EntityFrameworkCore;
@@ -30,14 +31,22 @@ namespace BudgetManage.Services
             return expenses.Where(e => e.IsWishItem == false).ToList();
         }
         
-        public async Task<List<Expense>> ExpenseForExpenseGroup(int? expenseGroupId)
+        public async Task<ExpensesForExpenseGroupViewModel> ExpenseForExpenseGroup(int? expenseGroupId)
         {
             if (expenseGroupId == null)
             {
                 throw new NullReferenceException($"{nameof(expenseGroupId)} is null");
             }
 
-            return await _context.Expenses.Where(e => e.ExpenseGroupId == expenseGroupId).ToListAsync();
+            List<Expense> expensesForExpenseGroup = await _context.Expenses.Where(e => e.ExpenseGroupId == expenseGroupId).ToListAsync();
+
+            var viewModel = new ExpensesForExpenseGroupViewModel()
+            {
+                Expenses = expensesForExpenseGroup,
+                TotalAmount = CalculateTotal(expensesForExpenseGroup)
+            };
+
+            return viewModel;
         }
 
         public async Task<int> Add(Expense expense)

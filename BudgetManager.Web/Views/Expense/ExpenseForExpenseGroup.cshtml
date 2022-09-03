@@ -1,4 +1,4 @@
-﻿@model List<Expense>
+﻿@model ExpensesForExpenseGroupViewModel
 
 <div class="container">
     <partial name="_PageTitlePartial" model="@("All Expenses")" />
@@ -6,17 +6,23 @@
         <div class="col-12 col-md-6 col-lg-1 mb-5">
             <h2 class="btn btn-success btn-lg"><a class="text-light" asp-action="Add" asp-controller="Expense" asp-route-id="@((int)TempData["expenseGroupId"])"><i class="fa-solid fa-plus"></i></a></h2>
         </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-5">
+            <h2 class="bg-dark text-light text-center py-2 px-1 rounded"><i class="fa-solid fa-sack-dollar"></i> <b>@Model.TotalAmount BGN</b></h2>
+        </div>
     </div>
     <div class="row">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Text</th>
-                    <th>Is Checked?</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Is Wish Item?</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var expense in Model)
+                @foreach (var expense in Model.Expenses)
                 {
                     <tr>
                         <td>@expense.Amount </td>
