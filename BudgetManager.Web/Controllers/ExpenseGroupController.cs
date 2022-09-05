@@ -23,7 +23,7 @@ namespace BudgetManager.Web.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewData["action"] = "Add";
+            ViewData["action"] = nameof(Add);
             return View("Edit");
         }
 
@@ -43,6 +43,20 @@ namespace BudgetManager.Web.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await _expenseGroupService.Delete(id);
+            return RedirectToAction(nameof(All));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
+        {
+            ViewData["action"] = nameof(Update);
+            return View("Edit", await _expenseGroupService.GetById(id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(ExpenseGroup expenseGroup)
+        {
+            await _expenseGroupService.Update(expenseGroup);
             return RedirectToAction(nameof(All));
         }
     }

@@ -42,19 +42,23 @@ namespace BudgetManage.Services
             return await _context.ExpenseGroups.ToListAsync();
         }
 
-        public Task<ExpenseGroup> GetById(int? id)
+        public async Task<ExpenseGroup> GetById(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.ExpenseGroups.FindAsync(id);
+        }
+
+        public async Task<int> Update(ExpenseGroup entity)
+        {
+            var entityToUpdate = await GetById(entity.Id);
+            entityToUpdate.Title = entity.Title;
+            entityToUpdate.Description = entity.Description;
+
+            return await SaveChanges();
         }
 
         public async Task<int> SaveChanges()
         {
             return await _context.SaveChangesAsync();
-        }
-
-        public Task<int> Update(ExpenseGroup entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }
