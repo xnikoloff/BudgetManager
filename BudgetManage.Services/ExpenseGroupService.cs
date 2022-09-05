@@ -31,7 +31,7 @@ namespace BudgetManage.Services
                 throw new NullReferenceException($"{nameof(id)} is null");
             }
 
-            var expenseGroup = _context.ExpenseGroups.FindAsync(id);
+            var expenseGroup = await _context.ExpenseGroups.FindAsync(id);
             _context.Remove(expenseGroup);
 
             return await SaveChanges();

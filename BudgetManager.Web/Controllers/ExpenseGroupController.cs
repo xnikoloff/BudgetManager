@@ -40,9 +40,9 @@ namespace BudgetManager.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Delete(int expenseGroupId)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _expenseGroupService.Delete(expenseGroupId);
+            await _expenseGroupService.Delete(id);
             return RedirectToAction(nameof(All));
         }
     }
