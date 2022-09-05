@@ -17,6 +17,7 @@ namespace BudgetManager.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> All()
         {
+            ViewData["totalAmount"] = await _expenseGroupService.GetTotalAmount();
             return View(await _expenseGroupService.GetAll());
         }
 

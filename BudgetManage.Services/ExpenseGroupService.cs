@@ -56,6 +56,12 @@ namespace BudgetManage.Services
             return await SaveChanges();
         }
 
+        public async Task<decimal> GetTotalAmount()
+        {
+            return await _context.Expenses.Where(e => e.ExpenseGroupId != null).Select(e => e.Amount).SumAsync();
+
+        } 
+
         public async Task<int> SaveChanges()
         {
             return await _context.SaveChangesAsync();

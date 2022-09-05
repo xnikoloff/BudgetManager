@@ -12,6 +12,9 @@
         <div class="col-12 col-md-6 col-lg-1 mb-5">
             <h2 class="btn btn-warning btn-lg"><a class="text-light" asp-action="Archive"><i class="fa-solid fa-clipboard-check"></i></a></h2>
         </div>
+        <div class="col-12 col-md-6 col-lg-3 mb-5 ml-auto">
+            <h2 class="btn btn-dark btn-lg">Total: <b>@ViewData["totalAmount"] лв</b></h2>
+        </div>
     </div>
     <div class="row">
         @foreach (var expenseGroup in Model)
