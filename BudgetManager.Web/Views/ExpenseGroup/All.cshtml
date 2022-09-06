@@ -1,6 +1,8 @@
 ﻿@model List<ExpenseGroup>
 @{
     ViewData["Title"] = "Checklists";
+    List<decimal> totalAmounts = (List<decimal>)ViewData["expenseGroupAmounts"];
+    int index = 0;
 }
 
 <div class="container">
@@ -19,10 +21,12 @@
     <div class="row">
         @foreach (var expenseGroup in Model)
         {
+
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-header bg-warning">
                         <h4 class="card-title"><a asp-action="ExpenseForExpenseGroup" asp-controller="Expense" asp-route-expenseGroupId="@expenseGroup.Id" class="text-light">@expenseGroup.Title</a></h4>
+                        <h4 class="p-2 text-center bg-dark rounded text-white">@totalAmounts[index] лв</h4>
                     </div>
                     <div class="card-body">
                         <h5>@expenseGroup.Description</h5>
@@ -33,6 +37,8 @@
                     </div>
                 </div>
             </div>
+
+            index++;
         }
 
     </div>

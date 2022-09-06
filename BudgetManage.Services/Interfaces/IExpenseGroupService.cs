@@ -7,5 +7,6 @@ namespace BudgetManage.Services.Interfaces
     public interface IExpenseGroupService : IServiceBase<ExpenseGroup>
     {
         Task<decimal> GetTotalAmount();
+        Task<List<decimal>> GetTotalAmountForExpenseGroups();
     }
 }

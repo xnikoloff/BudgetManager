@@ -17,8 +17,8 @@
                     <th>Amount</th>
                     <th>Description</th>
                     <th>Date</th>
+                    <th>Necessity</th>
                     <th>Type</th>
-                    <th>Is Wish Item?</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,7 +29,7 @@
                         <td>@expense.Description</td>
                         <td>@expense.Date</td>
                         <td>@expense.Reason</td>
-                        <td class="@(expense.IsWishItem ? "bg-success" : "bg-waring")">@(expense.IsWishItem ? "Yes" : "No")</td>
+                        <td>@expense.ExpenseType</td>
                     </tr>
                 }
             </tbody>

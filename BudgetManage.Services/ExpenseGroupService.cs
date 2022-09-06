@@ -60,7 +60,30 @@ namespace BudgetManage.Services
         {
             return await _context.Expenses.Where(e => e.ExpenseGroupId != null).Select(e => e.Amount).SumAsync();
 
-        } 
+        }
+
+        private async Task<decimal> GetTotalAmount(int? expenseGroupId)
+        {
+            if (expenseGroupId == null)
+            {
+                throw new NullReferenceException($"{nameof(expenseGroupId)} is null");
+            }
+
+            return await _context.Expenses.Where(e => e.ExpenseGroupId == expenseGroupId).Select(e => e.Amount).SumAsync();
+
+        }
+
+        public async Task<List<decimal>> GetTotalAmountForExpenseGroups()
+        {
+            List<decimal> amounts = new List<decimal>();
+
+            foreach(var expenseGroup in await GetAll())
+            {
+                amounts.Add(await GetTotalAmount(expenseGroup.Id));
+            }
+
+            return amounts;
+        }
 
         public async Task<int> SaveChanges()
         {
