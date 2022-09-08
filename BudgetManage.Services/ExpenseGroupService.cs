@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BudgetManage.Services.Interfaces;
 using BudgetManager.Domain;
+using BudgetManager.Domain.ViewModels;
 using BudgetManager.Infastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,16 +13,30 @@ namespace BudgetManage.Services
     public class ExpenseGroupService : IExpenseGroupService
     {
         private readonly BudgetManagerDbContext _context;
+        private readonly IEmailService _emailService;
 
-        public ExpenseGroupService(BudgetManagerDbContext context)
+        public ExpenseGroupService(BudgetManagerDbContext context, IEmailService emailService)
         {
             _context = context;
+            _emailService = emailService;
         }
 
         public async Task<int> Add(ExpenseGroup entity)
         {
             _context.Add(entity);
-            return await SaveChanges();
+            int result = await SaveChanges();
+
+            var emailTemplate = new EmailTemplateViewModel
+            {
+                StartDate = "08.09.2022",
+                EndDate = "09.08.2022",
+                TodoTitle = "Test Title"
+            };
+
+            await _emailService.Send("test email", emailTemplate);
+
+            return result;
+
         }
 
         public async Task<int> Delete(int? id)
